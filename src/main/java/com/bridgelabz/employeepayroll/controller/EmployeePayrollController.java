@@ -6,6 +6,8 @@ import com.bridgelabz.employeepayroll.service.IEmployeeServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employeepayroll")
 public class EmployeePayrollController {
@@ -13,11 +15,10 @@ public class EmployeePayrollController {
 	 @Autowired
 	    IEmployeeServices employeeServices;
 
-    @RequestMapping("/employee")
-    public EmployeeModel employeeModel(){
-    	EmployeeDTO employeeDTO=new EmployeeDTO();
-        return employeeServices.getEmployeeData(employeeDTO);
-    }
+	 @RequestMapping("/seeEmployees")
+     public List<EmployeeModel> employeeModel(){
+     return employeeServices.getEmployeeData();
+ }
 
     @GetMapping("/getEmployee")
     public EmployeeModel getEmployeeModel(@RequestParam(value = "id") int id){
